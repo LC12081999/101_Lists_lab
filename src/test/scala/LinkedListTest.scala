@@ -32,7 +32,7 @@ import org.junit.jupiter.api.Test
     @Test def test_toStringImplemented(): Unit = {
       val n = new LinkedList()
       val defaultToString = n.getClass.getName + "@" + Integer.toHexString(System.identityHashCode(n))
-      assertNotEquals(n.toString(), defaultToString, "toString() MUST be implemented")
+      assertNotEquals(n.toString, defaultToString, "toString() MUST be implemented")
     }
 
     @DisplayName("The toString method should report the list elements correctly")
@@ -58,16 +58,16 @@ import org.junit.jupiter.api.Test
       n.addToStart("Cathy")
       n.addToStart("Bob")
       n.addToStart("Alice")
-      n.removeFirstElement()
+      n.removeFirstElement
       assertEquals(2, n.getSize(), "size MUST be 2 after removing an element from a 3 element list")
       assertEquals("Bob", n.head.item, "first element must be 'Bob'")
-      n.removeFirstElement()
+      n.removeFirstElement
       assertEquals(1, n.getSize(), "size MUST be 1 after removing an element from a 2 element list")
       assertEquals("Cathy", n.head.item, "first element must be 'Cathy'")
-      n.removeFirstElement()
+      n.removeFirstElement
       assertEquals(0, n.getSize(), "size MUST be 0 after removing an element from a 1 element list")
       assertEquals(null, n.head, "Head must be null")
-      n.removeFirstElement()
+      n.removeFirstElement
       assertEquals(0, n.getSize(), "size MUST be 0 after removing an element from a 0 element list")
       assertEquals(null, n.head, "Head must be null")
     }
@@ -75,11 +75,11 @@ import org.junit.jupiter.api.Test
     @DisplayName("Getting the last element works")
     @Test def testgetLastElement(): Unit = {
       val n = new LinkedList()
-      assertEquals(null, n.getLastElement(), "last element must be null")
+      assertEquals(null, n.getLastElement, "last element must be null")
       n.addToStart("Cathy")
       n.addToStart("Bob")
       n.addToStart("Alice")
-      assertEquals("Cathy", n.getLastElement().item, "last element must be 'Cathy'")
+      assertEquals("Cathy", n.getLastElement.item, "last element must be 'Cathy'")
       assertEquals(3, n.getSize(), "size MUST be 3 (getLastElement() MUST not remove the element)")
     }
 
@@ -87,11 +87,11 @@ import org.junit.jupiter.api.Test
     @Test def testAddToEnd(): Unit = {
       val n = new LinkedList()
       n.addToEnd("Alice")
-      assertEquals("Alice", n.getLastElement().item, "last element must be 'Alice'")
+      assertEquals("Alice", n.getLastElement.item, "last element must be 'Alice'")
       n.addToEnd("Bob")
-      assertEquals("Bob", n.getLastElement().item, "last element must be 'Bob'")
+      assertEquals("Bob", n.getLastElement.item, "last element must be 'Bob'")
       n.addToEnd("Cathy")
-      assertEquals("Cathy", n.getLastElement().item, "last element must be 'Cathy'")
+      assertEquals("Cathy", n.getLastElement.item, "last element must be 'Cathy'")
     }
 
     @DisplayName("Must be able to find elements correctly")
@@ -112,15 +112,15 @@ import org.junit.jupiter.api.Test
       assertTrue(n.isPresent("Alice"), "'Alice' MUST be in this list")
       assertTrue(n.isPresent("Bob"), "'Bob' MUST be in this list")
       assertTrue(n.isPresent("Cathy"), "'Cathy' MUST be in this list")
-      n.removeFirstElement()
+      n.removeFirstElement
       assertFalse(n.isPresent("Alice"), "'Alice' MUST not be in this list")
       assertTrue(n.isPresent("Bob"), "'Bob' MUST be in this list")
       assertTrue(n.isPresent("Cathy"), "'Cathy' MUST be in this list")
-      n.removeFirstElement()
+      n.removeFirstElement
       assertFalse(n.isPresent("Alice"), "'Alice' MUST not be in this list")
       assertFalse(n.isPresent("Bob"), "'Bob' MUST not be in this list")
       assertTrue(n.isPresent("Cathy"), "'Cathy' MUST be in this list")
-      n.removeFirstElement()
+      n.removeFirstElement
       assertFalse(n.isPresent("Alice"), "'Alice' MUST not be in the empty list")
       assertFalse(n.isPresent("Bob"), "'Bob' MUST not be in the empty list")
       assertFalse(n.isPresent("Cathy"), "'Cathy' MUST not be in the empty list")
@@ -135,14 +135,14 @@ import org.junit.jupiter.api.Test
       assertEquals(null, n.findElement("Alice"), "'Alice' MUST not be in empty list")
       n.addToEnd("Alice")
       assertEquals(n.head, n.findElement("Alice"), "'Alice' MUST be the head element")
-      assertEquals(n.getLastElement(), n.findElement("Alice"), "'Alice' MUST be the end element")
+      assertEquals(n.getLastElement, n.findElement("Alice"), "'Alice' MUST be the end element")
       n.addToEnd("Bob")
-      assertEquals(n.getLastElement(), n.findElement("Bob"), "'Bob' MUST be the end element")
+      assertEquals(n.getLastElement, n.findElement("Bob"), "'Bob' MUST be the end element")
       assertNotEquals(null, n.findElement("Alice"), "'Alice' MUST be in the list")
       n.addToEnd("Cathy")
       assertNotEquals(null, n.findElement("Alice"), "'Alice' MUST be in the list")
       assertNotEquals(null, n.findElement("Bob"), "'Bob' MUST be in the list")
-      assertEquals(n.getLastElement(), n.findElement("Cathy"), "'Cathy' MUST be the end element")
+      assertEquals(n.getLastElement, n.findElement("Cathy"), "'Cathy' MUST be the end element")
     }
 
     @Test
@@ -152,13 +152,13 @@ import org.junit.jupiter.api.Test
       n.addToEnd("Bob")
       n.addToEnd("Alice")
       n.swapElements("Alice", "Bob")
-      assertEquals("Bob", n.getLastElement().item, "'Bob' MUST be the last element")
+      assertEquals("Bob", n.getLastElement.item, "'Bob' MUST be the last element")
       assertEquals(3, n.getSize(), "size MUST not have changed after swap")
       n.swapElements("Cathy", "Alice")
       assertEquals(n.head, n.findElement("Alice"), "'Alice' MUST be the head element")
       assertEquals(3, n.getSize(), "size MUST not have changed after swap")
       n.swapElements("Cathy", "Bob")
-      assertEquals("Cathy", n.getLastElement().item, "'Cathy' MUST be the last element")
+      assertEquals("Cathy", n.getLastElement.item, "'Cathy' MUST be the last element")
       assertEquals(3, n.getSize(), "size MUST not have changed after swap")
       n.swapElements("Alice", "Dan")
       assertEquals(3, n.getSize(), "size MUST not have changed after swap")
@@ -193,22 +193,22 @@ import org.junit.jupiter.api.Test
       n.addToEnd("Alice")
       n.addToEnd("Bob")
       n.addToEnd("Cathy")
-      n.removeLastElement()
+      n.removeLastElement
       assertEquals(2, n.getSize(), "size MUST be 2")
       assertEquals(null, n.findElement("Cathy"), "'Cathy' MUST not be in this list")
       assertNotEquals(null, n.findElement("Alice"), "'Alice' MUST be in this list")
       assertNotEquals(null, n.findElement("Bob"), "'Bob' MUST be in this list")
-      n.removeLastElement()
+      n.removeLastElement
       assertEquals(1, n.getSize(), "size MUST be 1")
       assertEquals(null, n.findElement("Bob"), "'Bob' MUST not be in this list")
       assertNotEquals(null, n.findElement("Alice"), "'Alice' MUST be in this list")
-      n.removeLastElement()
+      n.removeLastElement
       assertEquals(0, n.getSize(), "size MUST be 0")
       assertEquals(null, n.findElement("Alice"), "'Alice' MUST not be in this list")
-      n.removeLastElement()
+      n.removeLastElement
       assertEquals(0, n.getSize(), "size MUST be 0")
       n = new LinkedList()
-      n.removeLastElement()
+      n.removeLastElement
       assertEquals(0, n.getSize(), "size MUST be 0")
     }
 
@@ -222,12 +222,12 @@ import org.junit.jupiter.api.Test
       assertEquals(2, n.getSize(), "size MUST be 2")
       assertEquals(n.head, n.findElement("Bob"), "'Bob' MUST be head")
       assertEquals(null, n.findElement("Alice"), "'Alice' MUST not be in this list")
-      assertEquals("Cathy", n.getLastElement().item, "'Cathy' MUST be at the end")
+      assertEquals("Cathy", n.getLastElement.item, "'Cathy' MUST be at the end")
       n.addToStart("Alice")
       n.removeElement("Bob")
       assertEquals(2, n.getSize(), "size MUST be 2")
       assertEquals(null, n.findElement("Bob"), "'Bob' MUST not be in this list")
-      assertEquals("Cathy", n.getLastElement().item, "'Cathy' MUST be at the end")
+      assertEquals("Cathy", n.getLastElement.item, "'Cathy' MUST be at the end")
       n = new LinkedList()
       n.addToEnd("Alice")
       n.addToEnd("Bob")
@@ -235,7 +235,7 @@ import org.junit.jupiter.api.Test
       n.removeElement("Cathy")
       assertEquals(2, n.getSize(), "size MUST be 2")
       assertEquals(null, n.findElement("Cathy"), "'Bob' MUST not be in this list")
-      assertEquals("Bob", n.getLastElement().item, "'Bob' MUST be at the end")
+      assertEquals("Bob", n.getLastElement.item, "'Bob' MUST be at the end")
       n.removeElement("Dan")
       n = new LinkedList()
       n.removeElement("Dan")
@@ -255,25 +255,25 @@ import org.junit.jupiter.api.Test
       n.insertAfter("Alice", "Cathy")
       assertEquals(2, n.getSize(), "size MUST be 2")
       assertEquals(n.head, n.findElement("Alice"), "'Alice' MUST be head")
-      assertEquals("Cathy", n.getLastElement().item, "'Cathy' MUST be at the end")
+      assertEquals("Cathy", n.getLastElement.item, "'Cathy' MUST be at the end")
       n.insertAfter("Alice", "Bob")
       assertEquals(3, n.getSize(), "size MUST be 3")
-      assertEquals("Cathy", n.getLastElement().item, "'Cathy' MUST be at the end")
+      assertEquals("Cathy", n.getLastElement.item, "'Cathy' MUST be at the end")
       n.insertAfter("Cathy", "Dan")
       assertEquals(4, n.getSize(), "size MUST be 4")
-      assertEquals("Dan", n.getLastElement().item, "'Dan' MUST be at the end")
+      assertEquals("Dan", n.getLastElement.item, "'Dan' MUST be at the end")
       n.insertAfter("Erin", "Frank")
       assertEquals(4, n.getSize(), "size MUST be 4")
-      assertEquals("Dan", n.getLastElement().item, "'Dan' MUST be at the end")
+      assertEquals("Dan", n.getLastElement.item, "'Dan' MUST be at the end")
       assertFalse(n.isPresent("Erin"), "'Erin' MUST not be in the list")
       assertFalse(n.isPresent("Frank"), "'Frank' MUST not be in the list")
       n.insertAfter("Frank", null)
       assertEquals(4, n.getSize(), "size MUST be 4")
-      assertEquals("Dan", n.getLastElement().item, "'Dan' MUST be at the end")
+      assertEquals("Dan", n.getLastElement.item, "'Dan' MUST be at the end")
       assertFalse(n.isPresent("Frank"), "'Frank' MUST not be in the list")
       n.insertAfter(null, "Frank")
       assertEquals(4, n.getSize(), "size MUST be 4")
-      assertEquals("Dan", n.getLastElement().item, "'Dan' MUST be at the end")
+      assertEquals("Dan", n.getLastElement.item, "'Dan' MUST be at the end")
       assertFalse(n.isPresent("Frank"), "'Frank' MUST not be in the list")
     }
   }
